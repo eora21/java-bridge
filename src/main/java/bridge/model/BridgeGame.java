@@ -5,6 +5,14 @@ package bridge.model;
  */
 public class BridgeGame {
 
+    private final Bridges bridges;
+    private final BridgeGameLog bridgeGameLog;
+
+    public BridgeGame(Bridges bridges, BridgeGameLog bridgeGameLog) {
+        this.bridges = bridges;
+        this.bridgeGameLog = bridgeGameLog;
+    }
+
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드
      * <p>
