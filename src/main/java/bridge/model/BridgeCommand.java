@@ -15,7 +15,7 @@ public enum BridgeCommand {
         this.randomValue = randomValue;
     }
 
-    public String findCommandByRandomValue(int randomValue) {
+    public static String findCommandByRandomValue(int randomValue) {
         return Arrays.stream(BridgeCommand.values())
                 .filter(bridge -> bridge.randomValue == randomValue)
                 .findFirst()
