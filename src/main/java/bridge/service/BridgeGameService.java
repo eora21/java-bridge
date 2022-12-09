@@ -3,6 +3,7 @@ package bridge.service;
 import bridge.BridgeMaker;
 import bridge.BridgeNumberGenerator;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.model.Bridge;
 import bridge.model.BridgeGame;
 import bridge.model.BridgeGameLog;
 import bridge.model.Bridges;
@@ -18,5 +19,9 @@ public class BridgeGameService {
         List<String> bridgeCommands = bridgeMaker.makeBridge(bridgeSize);
         Bridges bridges = new Bridges(bridgeCommands);
         return new BridgeGame(bridges, new BridgeGameLog());
+    }
+
+    public Bridge selectBridge(String command) {
+        return Bridge.findBridgeByCommand(command);
     }
 }
