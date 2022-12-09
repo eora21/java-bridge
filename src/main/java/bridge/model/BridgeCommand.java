@@ -7,9 +7,7 @@ public enum BridgeCommand {
     DOWN("D", 0, "아래");
 
     private final String command;
-
     private final int randomValue;
-
     private final String description;
 
     BridgeCommand(String command, int randomValue, String description) {
@@ -24,5 +22,13 @@ public enum BridgeCommand {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("일치하는 커맨드가 없습니다."))
                 .command;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
