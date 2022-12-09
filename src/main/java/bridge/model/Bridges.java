@@ -19,4 +19,8 @@ public class Bridges {
             throw new IllegalArgumentException("다리의 범위를 벗어났습니다.");
         }
     }
+
+    public int size() {
+        return bridges.size();
+    }
 }
