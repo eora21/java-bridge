@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class Bridges {
     private final List<Bridge> bridges;
 
-    public Bridges(List<String> bridge) {
-        this.bridges = bridge.stream()
+    public Bridges(List<String> bridgeCommands) {
+        this.bridges = bridgeCommands.stream()
                 .map(Bridge::findBridgeByCommand)
                 .collect(Collectors.toList());
     }
