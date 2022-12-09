@@ -3,16 +3,19 @@ package bridge.model;
 import java.util.Arrays;
 
 public enum BridgeCommand {
-    UP("U", 1),
-    DOWN("D", 0);
+    UP("U", 1, "위"),
+    DOWN("D", 0, "아래");
 
     private final String command;
 
     private final int randomValue;
 
-    BridgeCommand(String command, int randomValue) {
+    private final String description;
+
+    BridgeCommand(String command, int randomValue, String description) {
         this.command = command;
         this.randomValue = randomValue;
+        this.description = description;
     }
 
     public static String findCommandByRandomValue(int randomValue) {
