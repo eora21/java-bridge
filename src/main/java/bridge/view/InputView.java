@@ -1,6 +1,7 @@
 package bridge.view;
 
 import bridge.model.Bridge;
+import bridge.model.QuitStatus;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -11,7 +12,11 @@ import java.util.stream.Collectors;
 public class InputView {
 
     private static final String explainBridgeCommand = Arrays.stream(Bridge.values())
-            .map(bridge -> String.format("%s: %s", bridge.getCommand(), bridge.getDescription()))
+            .map(bridge -> String.format("%s: %s", bridge.getDescription(), bridge.getCommand()))
+            .collect(Collectors.joining(", ", "(", ")"));
+
+    private static final String explainQuitCommand = Arrays.stream(QuitStatus.values())
+            .map(quitStatus -> String.format("%s: %s", quitStatus.getDescription(), quitStatus.getCommand()))
             .collect(Collectors.joining(", ", "(", ")"));
 
     private final OutputView outputView;
@@ -42,7 +47,8 @@ public class InputView {
      * 사용자가 게임을 다시 시도할지 종료할지 여부를 입력받는다.
      */
     public String readGameCommand() {
-        return null;
+        outputView.printInputMessage(String.format("게임을 다시 시도할지 여부를 선택해주세요. %s", explainBridgeCommand));
+        return Console.readLine();
     }
 
     private int toInt(String input) {
