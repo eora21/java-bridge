@@ -3,6 +3,7 @@ package bridge.controller;
 import bridge.model.Bridge;
 import bridge.model.BridgeGame;
 import bridge.model.GameStatus;
+import bridge.model.QuitStatus;
 import bridge.service.BridgeGameService;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -56,6 +57,9 @@ public class BridgeGameController {
     }
 
     private boolean wantQuit() {
-        return false;
+        return exceptionController.getCorrectInput(() -> {
+            String command = inputView.readGameCommand();
+            return QuitStatus.findStatusByCommand(command);
+        });
     }
 }
