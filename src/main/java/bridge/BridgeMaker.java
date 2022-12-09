@@ -1,6 +1,6 @@
 package bridge;
 
-import bridge.model.BridgeCommand;
+import bridge.model.Bridge;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class BridgeMaker {
     public List<String> makeBridge(int size) {
         validSize(size);
         return new ArrayList<>() {{
-            add(BridgeCommand.findCommandByRandomValue(bridgeNumberGenerator.generate()));
+            add(Bridge.findCommandByRandomValue(bridgeNumberGenerator.generate()));
         }};
     }
 

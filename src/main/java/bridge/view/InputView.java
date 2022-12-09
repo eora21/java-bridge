@@ -1,6 +1,6 @@
 package bridge.view;
 
-import bridge.model.BridgeCommand;
+import bridge.model.Bridge;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
  */
 public class InputView {
 
-    private static final String explainBridgeCommand = Arrays.stream(BridgeCommand.values())
-            .map(bridgeCommand -> String.format("%s: %s", bridgeCommand.getCommand(), bridgeCommand.getDescription()))
+    private static final String explainBridgeCommand = Arrays.stream(Bridge.values())
+            .map(bridge -> String.format("%s: %s", bridge.getCommand(), bridge.getDescription()))
             .collect(Collectors.joining(", ", "(", ")"));
 
     private final OutputView outputView;
