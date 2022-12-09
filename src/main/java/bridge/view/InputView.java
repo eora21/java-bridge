@@ -1,17 +1,29 @@
 package bridge.view;
 
+import bridge.model.BridgeCommand;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
  */
 public class InputView {
 
+    private static final String explainBridgeCommand = Arrays.stream(BridgeCommand.values())
+            .map(bridgeCommand -> String.format("%s: %s", bridgeCommand.getCommand(), bridgeCommand.getDescription()))
+            .collect(Collectors.joining(", ", "(", ")"));
+
+    private final OutputView outputView = new OutputView();
+
+
     /**
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
+        outputView.printInputMessage("다리의 길이를 입력해주세요.");
         String input = Console.readLine();
+        outputView.blank();
         return toInt(input);
     }
 
