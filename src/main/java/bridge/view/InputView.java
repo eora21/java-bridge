@@ -14,8 +14,11 @@ public class InputView {
             .map(bridgeCommand -> String.format("%s: %s", bridgeCommand.getCommand(), bridgeCommand.getDescription()))
             .collect(Collectors.joining(", ", "(", ")"));
 
-    private final OutputView outputView = new OutputView();
+    private final OutputView outputView;
 
+    public InputView(OutputView outputView) {
+        this.outputView = outputView;
+    }
 
     /**
      * 다리의 길이를 입력받는다.
