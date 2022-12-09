@@ -21,12 +21,12 @@ public class Log {
         this.safe = safe;
     }
 
-    public static Log getInstance(Bridge bridge, boolean isSafe) {
-        Log log = CACHE.get(bridge).get(isSafe);
+    public static Log getInstance(Bridge bridge, boolean safe) {
+        Log log = CACHE.get(bridge).get(safe);
 
         if (Objects.isNull(log)) {
-            log = new Log(bridge, isSafe);
-            CACHE.get(bridge).put(isSafe, log);
+            log = new Log(bridge, safe);
+            CACHE.get(bridge).put(safe, log);
         }
 
         return log;

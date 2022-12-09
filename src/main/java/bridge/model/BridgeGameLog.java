@@ -8,8 +8,8 @@ public class BridgeGameLog {
 
     private final List<Log> gameLog = new ArrayList<>();
 
-    public void addLog(Bridge bridge, boolean isSafe) {
-        Log log = Log.getInstance(bridge, isSafe);
+    public void addLog(Bridge bridge, boolean safe) {
+        Log log = Log.getInstance(bridge, safe);
         gameLog.add(log);
     }
 
