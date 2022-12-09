@@ -31,7 +31,7 @@ public class BridgeGameController {
             Bridge bridge = selectBridge();
             GameStatus status = bridgeGame.move(bridge);
 
-            if (isOver(status)) {
+            if (isOver(bridgeGame, status)) {
                 return status;
             }
         }
@@ -44,22 +44,28 @@ public class BridgeGameController {
         });
     }
 
-    private boolean isOver(GameStatus status) {
+    private boolean isOver(BridgeGame bridgeGame, GameStatus status) {
         if (status == GameStatus.IN_PROGRESS) {
             return false;
         }
 
         if (status == GameStatus.FAIL) {
-            return wantQuit();
+            return wantQuit(bridgeGame);
         }
 
         return true;
     }
 
-    private boolean wantQuit() {
-        return exceptionController.getCorrectInput(() -> {
+    private boolean wantQuit(BridgeGame bridgeGame) {
+        Boolean userSelect = exceptionController.getCorrectInput(() -> {
             String command = inputView.readGameCommand();
             return QuitStatus.findStatusByCommand(command);
         });
+
+        if (!userSelect) {
+            bridgeGame.retry();
+        }
+
+        return userSelect;
     }
 }
